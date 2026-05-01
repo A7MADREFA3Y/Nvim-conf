@@ -11,7 +11,22 @@ return {
     },
     build = "make tiktoken",
     opts = {
-      -- See Configuration section for options
+      vim.keymap.set("n", "<leader>tt", function()
+        require("CopilotChat").toggle()
+      end, { desc = "Toggle Copilot Chat" }),
+
+      require("which-key").add({
+        {
+          "<leader>t",
+          desc = "Copilot Chat Open",
+          icon = "", -- pick any Nerd Font icon you like
+        },
+        {
+          "<leader>tt",
+          desc = "Copilot Chat Open",
+          icon = "", -- pick any Nerd Font icon you like
+        },
+      }),
     },
   },
 }
