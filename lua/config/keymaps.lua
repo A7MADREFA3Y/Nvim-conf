@@ -9,3 +9,5 @@ vim.keymap.set("n", "<Right>", "<nop>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line to void" })
 vim.keymap.set("v", "d", '"_d', { desc = "Delete selection to void" })
+
+vim.keymap.set("n", "<s-j>", "<nope>", { noremap = true, silent = true })
