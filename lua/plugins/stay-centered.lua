@@ -1,31 +1,31 @@
-local flash = require("plugins.flash")
--- https://github.com/arnamak/stay-centered.nvim
-return {
-  {
-    "arnamak/stay-centered.nvim",
-    enabled = vim.g.scrollback_mode ~= "neobean" and vim.g.simpler_scrollback ~= "deeznuts",
-    opts = function()
-      -- Add any configurations here, like skip_filetypes if needed
-      -- skip_filetypes = {"lua", "typescript"},
-      require("stay-centered").setup({
-        -- The filetype is determined by the vim filetype, not the file extension. In order to get the filetype, open a file and run the command:
-        -- :lua print(vim.bo.filetype)
-        skip_filetypes = {},
-        -- Set to false to disable by default
-        enabled = true,
-        -- allows scrolling to move the cursor without centering, default recommended
-        allow_scroll_move = false,
-        -- temporarily disables plugin on left-mouse down, allows natural mouse selection
-        -- try disabling if plugin causes lag, function uses vim.on_key
-        disable_on_mouse = true,
-      })
-      -- Define the keymap to toggle the stay-centered plugin
-      -- I had to move this keymap here inside, otherwise the plugin started
-      -- disabled if I set the keymap outside under "keys"
-      vim.keymap.set("n", "<leader>US", function()
-        require("stay-centered").toggle()
-        vim.notify("Toggled stay-centered", vim.log.levels.INFO)
-      end, { desc = "[P]Toggle stay-centered.nvim" })
-    end,
-  },
-}
+-- local flash = require("plugins.flash")
+-- -- https://github.com/arnamak/stay-centered.nvim
+-- return {
+--   {
+--     "arnamak/stay-centered.nvim",
+--     enabled = vim.g.scrollback_mode ~= "neobean" and vim.g.simpler_scrollback ~= "deeznuts",
+--     opts = function()
+--       -- Add any configurations here, like skip_filetypes if needed
+--       -- skip_filetypes = {"lua", "typescript"},
+--       require("stay-centered").setup({
+--         -- The filetype is determined by the vim filetype, not the file extension. In order to get the filetype, open a file and run the command:
+--         -- :lua print(vim.bo.filetype)
+--         skip_filetypes = {},
+--         -- Set to false to disable by default
+--         enabled = true,
+--         -- allows scrolling to move the cursor without centering, default recommended
+--         allow_scroll_move = false,
+--         -- temporarily disables plugin on left-mouse down, allows natural mouse selection
+--         -- try disabling if plugin causes lag, function uses vim.on_key
+--         disable_on_mouse = true,
+--       })
+--       -- Define the keymap to toggle the stay-centered plugin
+--       -- I had to move this keymap here inside, otherwise the plugin started
+--       -- disabled if I set the keymap outside under "keys"
+--       vim.keymap.set("n", "<leader>cq", function()
+--         require("stay-centered").toggle()
+--         vim.notify("Toggled stay-centered", vim.log.levels.INFO)
+--       end, { desc = "[P]Toggle stay-centered.nvim" })
+--     end,
+--   },
+-- }
