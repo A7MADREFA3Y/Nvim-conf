@@ -12,7 +12,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
+
 vim.opt.rtp:prepend(lazypath)
+vim.g.lazyvim_check_order = false
 
 require("lazy").setup({
   spec = {
@@ -21,6 +23,7 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
     { import = "plugins.lsp" },
+    { import = "lazyvim.plugins.extras.lsp.none-ls" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
