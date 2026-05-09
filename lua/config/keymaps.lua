@@ -12,6 +12,11 @@ vim.keymap.set("v", "d", '"_d', { desc = "Delete selection to void" })
 
 vim.keymap.set("n", "<s-j>", "<nope>", { noremap = true, silent = true })
 
--- Swap them: Leader - for vertical, Leader | for horizontal
-vim.keymap.set("n", "<leader>-", ":vsplit<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>|", ":split<CR>", { noremap = true, silent = true })
+-- -- Swap them: Leader - for vertical, Leader | for horizontal
+-- vim.keymap.set("n", "<leader>-", ":vsplit<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>|", ":split<CR>", { noremap = true, silent = true })
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
