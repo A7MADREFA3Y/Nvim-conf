@@ -1,3 +1,2 @@
 -- run all the plugins
-
-require("config")
+require("config.lazy")

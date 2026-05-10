@@ -7,7 +7,7 @@
 vim.opt.number = true -- Line numbers
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.cursorline = true -- Highlight current line
-vim.opt.scrolloff = 10 -- Keep 10 lines above/below cursor
+vim.opt.scrolloff = 15 -- Keep 10 lines above/below cursor
 vim.opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
 vim.opt.wrap = false -- Don't wrap lines
 vim.opt.cmdheight = 1 -- Command line height
@@ -84,14 +84,14 @@ vim.opt.wildmode = "longest:full,full" -- Completion mode for command-line
 vim.opt.wildignorecase = true -- Case-insensitive tab completion in commands
 
 -- Cursor Settings
-vim.opt.guicursor = {
-	"n-v-c:block", -- Normal, Visual, Command-line
-	"i-ci-ve:block", -- Insert, Command-line Insert, Visual-exclusive
-	"r-cr:hor20", -- Replace, Command-line Replace
-	"o:hor50", -- Operator-pending
-	"a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor", -- All modes: blinking & highlight groups
-	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch mode
-}
+-- vim.opt.guicursor = {
+-- 	"n-v-c:block", -- Normal, Visual, Command-line
+-- 	"i-ci-ve:block", -- Insert, Command-line Insert, Visual-exclusive
+-- 	"r-cr:hor20", -- Replace, Command-line Replace
+-- 	"o:hor50", -- Operator-pending
+-- 	"a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor", -- All modes: blinking & highlight groups
+-- 	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch mode
+-- }
 
 -- Folding Settings
 vim.opt.foldmethod = "expr" -- Use expression for folding
