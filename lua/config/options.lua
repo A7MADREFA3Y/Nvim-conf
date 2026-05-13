@@ -52,12 +52,11 @@ vim.opt.writebackup = false -- Don't backup before overwriting
 vim.opt.swapfile = false -- Don't create swap files
 vim.opt.undofile = true -- Persistent undo
 vim.opt.updatetime = 300 -- Time in ms to trigger CursorHold
-vim.opt.timeoutlen = 500 -- Time in ms to wait for mapped sequence
+vim.opt.timeoutlen = 300 -- Time in ms to wait for mapped sequence
 vim.opt.ttimeoutlen = 0 -- No wait for key code sequences
 vim.opt.autoread = true -- Auto-reload file if changed outside
 vim.opt.autowrite = false -- Don't auto-save on some events
-vim.opt.diffopt:append("vertical") -- Vertical diff splits
-vim.opt.diffopt:append("algorithm:patience") -- Better diff algorithm
+vim.opt.diffopt:append("vertical") -- Vertical diff splits vim.opt.diffopt:append("algorithm:patience") -- Better diff algorithm
 vim.opt.diffopt:append("linematch:60") -- Better diff highlighting (smart line matching)
 
 -- Set undo directory and ensure it exists

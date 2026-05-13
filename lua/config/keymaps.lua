@@ -8,20 +8,16 @@ vim.g.maplocalleader = " "
 -- Quick config editing
 vim.keymap.set("n", "<leader>rc", "<Cmd>e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
-
 vim.keymap.set("n", "<Up>", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Down>", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Left>", "<nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Right>", "<nop>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line to void" })
-vim.keymap.set("v", "d", '"_d', { desc = "Delete selection to void" })
 
 vim.keymap.set("n", "<s-j>", "<nope>", { noremap = true, silent = true })
 
-
--- vim.keymap.set("n", "j", function()
--- 	return vim.v.count == 0 and "gj" or "j"
+-- vim.keymap.set("n", "j", function() return vim.v.count == 0 and "gj" or "j"
 -- end, { expr = true, silent = true, desc = "Down (wrap-aware)" })
 -- vim.keymap.set("n", "k", function()
 -- 	return vim.v.count == 0 and "gk" or "k"
@@ -35,15 +31,34 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
-vim.keymap.set({ "n", "v" }, "dd", '"_d', { desc = "Delete without yanking" })
+-- vim.keymap.set({ "n", "v" }, "dd", '"_d', { desc = "Delete without yanking" })
 
+-- <- buffer ->
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bb", ":bprevious<CR>", { desc = "Previous buffer" })
 
+vim.keymap.set("n", "<leader>bd", function()
+	Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
+
+vim.keymap.set("n", "<leader>bo", function()
+	Snacks.bufdelete.other()
+end, { desc = "Delete Other Buffers" })
+
+-- <- /buffer ->
+
+-- <- save file ->
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- <- /save file ->
+
+-- <- window management ->
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+-- <- /window management ->
 
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
@@ -60,8 +75,23 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+-- <- quit  ->
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+-- <- /quit ->
 
+-- <- terminal ->
+vim.keymap.set("n", "<leader>fT", function()
+	Snacks.terminal()
+end, { desc = "Terminal (cwd)" })
+-- <- /terminal ->
+
+-- <- Lazy & mason ->
+vim.keymap.set("n", "<leader>ol", "<cmd>Lazy<cr>", { desc = "Lazy" })
+vim.keymap.set("n", "<leader>om", "<cmd>Mason<cr>", { desc = "Lazy" })
+-- <- /Lazy & mason ->
+
+-- toggle options
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 
 -- vim.keymap.set("n", "<leader>pa", function()
 -- 	local path = vim.fn.expand("%:p")
@@ -70,15 +100,15 @@ vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position"
 -- end, { desc = "Copy full file path" })
 
 vim.keymap.set("n", "<leader>e", function()
-  -- if require("zen-mode.view").is_open() then
-  --   require("zen-mode").close()
-  -- end
-  --
-  local api = require("nvim-tree.api")
+	-- if require("zen-mode.view").is_open() then
+	--   require("zen-mode").close()
+	-- end
+	--
+	local api = require("nvim-tree.api")
 
-  if api.tree.is_visible() then
-    api.tree.close()
-  else
-    api.tree.open()
-  end
+	if api.tree.is_visible() then
+		api.tree.close()
+	else
+		api.tree.open()
+	end
 end, { desc = "Toggle NvimTree (close Zen if active)" })
